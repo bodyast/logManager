@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+.log-viewer {
+  background-color: #1e1e1e;
+  color: #f8f8f8;
+  font-family: 'Consolas', 'Monaco', monospace;
+  padding: 16px;
+  border-radius: 4px;
+  height: 70vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.log-viewer .log-line {
+  margin: 0;
+  padding: 1px 0;
+}
+
+.log-viewer .info {
+  color: #6a9955;
+}
+
+.log-viewer .warning {
+  color: #dcdcaa;
+}
+
+.log-viewer .error {
+  color: #f14c4c;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

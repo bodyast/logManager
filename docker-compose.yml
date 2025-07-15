@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: log_manager
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/database.sqlite:/app/backend/database.sqlite
+      - ./backend/.env:/app/backend/.env
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    command: >
+      sh -c "cd /app/backend && 
+             npx knex migrate:latest && 
+             node src/index.js"

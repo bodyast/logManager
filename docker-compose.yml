@@ -10,12 +10,18 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./backend/database.sqlite:/app/backend/database.sqlite
       - ./backend/.env:/app/backend/.env
+      - sqlite-data:/app/backend/database
     environment:
       - NODE_ENV=production
       - PORT=3001
+      - DB_FILENAME=/app/backend/database/database.sqlite
     command: >
       sh -c "cd /app/backend && 
+             mkdir -p /app/backend/database &&
+             node -e 'const fs=require(\"fs\");if(!fs.existsSync(process.env.DB_FILENAME)){fs.writeFileSync(process.env.DB_FILENAME,\"\");}' &&
              npx knex migrate:latest && 
              node src/index.js"
+
+volumes:
+  sqlite-data:

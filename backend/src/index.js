@@ -22,7 +22,7 @@ const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
-      ? 'https://yourproductiondomain.com' 
+      ? 'http://localhost:3000'
       : 'http://localhost:3000',
     credentials: true
   }
@@ -35,7 +35,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? 'https://yourproductiondomain.com'
+    ? 'http://localhost:3000'
     : 'http://localhost:3000',
   credentials: true
 }));

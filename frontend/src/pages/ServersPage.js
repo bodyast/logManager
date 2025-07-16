@@ -54,17 +54,7 @@ const serverValidationSchema = Yup.object({
     .required('Ім\'я користувача обов\'язкове'),
   authType: Yup.string()
     .oneOf(['password', 'privateKey'], 'Виберіть тип аутентифікації')
-    .required('Тип аутентифікації обов\'язковий'),
-  password: Yup.string()
-    .when('authType', {
-      is: 'password',
-      then: Yup.string().required('Пароль обов\'язковий')
-    }),
-  private_key: Yup.string()
-    .when('authType', {
-      is: 'privateKey',
-      then: Yup.string().required('Приватний ключ обов\'язковий')
-    })
+    .required('Тип аутентифікації обов\'язковий')
 });
 
 const ServersPage = () => {

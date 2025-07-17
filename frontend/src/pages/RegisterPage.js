@@ -24,19 +24,19 @@ import { useAuth } from '../contexts/AuthContext';
 
 // Схема валідації
 const validationSchema = Yup.object({
-  username: Yup.string()
-    .min(3, 'Ім\'я користувача повинно містити щонайменше 3 символи')
-    .max(50, 'Ім\'я користувача не може бути довшим за 50 символів')
-    .required('Ім\'я користувача обов\'язкове'),
-  email: Yup.string()
-    .email('Введіть коректну електронну адресу')
-    .required('Електронна адреса обов\'язкова'),
-  password: Yup.string()
-    .min(6, 'Пароль повинен містити щонайменше 6 символів')
-    .required('Пароль обов\'язковий'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Паролі повинні співпадати')
-    .required('Підтвердження пароля обов\'язкове')
+    username: Yup.string()
+        .min(3, 'Username must be at least 3 characters')
+        .max(50, 'Username cannot exceed 50 characters')
+        .required('Username is required'),
+    email: Yup.string()
+        .email('Enter a valid email address')
+        .required('Email is required'),
+    password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .required('Password is required'),
+    confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Password confirmation is required')
 });
 
 const RegisterPage = () => {
@@ -98,7 +98,7 @@ const RegisterPage = () => {
               <PersonAddOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
-              Реєстрація
+                Sign Up
             </Typography>
             
             <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 1 }}>
@@ -106,7 +106,7 @@ const RegisterPage = () => {
                 margin="normal"
                 fullWidth
                 id="username"
-                label="Ім'я користувача"
+                label="Username"
                 name="username"
                 autoComplete="username"
                 autoFocus
@@ -121,7 +121,7 @@ const RegisterPage = () => {
                 margin="normal"
                 fullWidth
                 id="email"
-                label="Електронна адреса"
+                label="Email Address"
                 name="email"
                 autoComplete="email"
                 value={formik.values.email}
@@ -135,7 +135,7 @@ const RegisterPage = () => {
                 margin="normal"
                 fullWidth
                 name="password"
-                label="Пароль"
+                label="Password"
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="new-password"
@@ -163,7 +163,7 @@ const RegisterPage = () => {
                 margin="normal"
                 fullWidth
                 name="confirmPassword"
-                label="Підтвердження пароля"
+                label="Confirm Password"
                 type={showConfirmPassword ? 'text' : 'password'}
                 id="confirmPassword"
                 autoComplete="new-password"
@@ -194,13 +194,13 @@ const RegisterPage = () => {
                 sx={{ mt: 3, mb: 2 }}
                 disabled={formik.isSubmitting}
               >
-                Зареєструватися
+                  Register
               </Button>
               
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link component={RouterLink} to="/login" variant="body2">
-                    Вже маєте обліковий запис? Увійти
+                      Already have an account? Sign In
                   </Link>
                 </Grid>
               </Grid>

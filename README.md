@@ -75,14 +75,16 @@ docker-compose up -d
 
 If this project was helpful — please support its development 🙌
 
-### 💳 Donation via Monobank
+### ☕ Buy Me a Coffee
 
-Card number: `4441 1111 2600 6190`  
-Or simply scan the QR code below:
+Support the development of this project:
 
-![Monobank QR](monobank_qr.png)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/iqtechnology)
+
+Or visit directly: [https://buymeacoffee.com/iqtechnology](https://buymeacoffee.com/iqtechnology)
 
 ---
+
 
 ### 🔍 SEO Keywords
 log manager, real-time log viewer, ssh log viewer, tail logs web,  

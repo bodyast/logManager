@@ -24,11 +24,11 @@ import { useAuth } from '../contexts/AuthContext';
 
 // Схема валідації
 const validationSchema = Yup.object({
-  email: Yup.string()
-    .email('Введіть коректну електронну адресу')
-    .required('Електронна адреса обов\'язкова'),
-  password: Yup.string()
-    .required('Пароль обов\'язковий')
+    email: Yup.string()
+        .email('Enter a valid email address')
+        .required('Email is required'),
+    password: Yup.string()
+        .required('Password is required')
 });
 
 const LoginPage = () => {
@@ -80,16 +80,16 @@ const LoginPage = () => {
             <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
-              Вхід до системи
-            </Typography>
+              <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
+                  Sign In
+              </Typography>
             
             <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 fullWidth
                 id="email"
-                label="Електронна адреса"
+                label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -104,7 +104,7 @@ const LoginPage = () => {
                 margin="normal"
                 fullWidth
                 name="password"
-                label="Пароль"
+                label="Password"
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
@@ -135,13 +135,13 @@ const LoginPage = () => {
                 sx={{ mt: 3, mb: 2 }}
                 disabled={formik.isSubmitting}
               >
-                Увійти
+                  Sign In
               </Button>
               
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link component={RouterLink} to="/register" variant="body2">
-                    Немає облікового запису? Зареєструватися
+                      Don't have an account? Register
                   </Link>
                 </Grid>
               </Grid>

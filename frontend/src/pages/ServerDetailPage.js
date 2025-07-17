@@ -41,9 +41,9 @@ import { useSnackbar } from '../contexts/SnackbarContext';
 // Схема валідації для шляху до логу
 const logPathValidationSchema = Yup.object({
   name: Yup.string()
-    .required('Назва логу обов\'язкова'),
+      .required('Log name is required'),
   path: Yup.string()
-    .required('Шлях до логу обов\'язковий'),
+      .required('Log path is required'),
   description: Yup.string()
 });
 
@@ -69,8 +69,8 @@ const ServerDetailPage = () => {
       const response = await api.get(`/api/servers/${id}`);
       setServer(response.data.data.server);
     } catch (error) {
-      console.error('Помилка завантаження сервера:', error);
-      showSnackbar('Помилка завантаження даних сервера', 'error');
+      console.error('Error loading server:', error);
+      showSnackbar('Error loading server data', 'error');
       navigate('/servers');
     } finally {
       setLoading(false);
@@ -84,8 +84,8 @@ const ServerDetailPage = () => {
       const response = await api.get(`/api/log-paths/server/${id}`);
       setLogPaths(response.data.data.logPaths);
     } catch (error) {
-      console.error('Помилка завантаження шляхів до логів:', error);
-      showSnackbar('Помилка завантаження шляхів до логів', 'error');
+      console.error('Error loading log paths:', error);
+      showSnackbar('Error loading log paths', 'error');
     } finally {
       setLogPathsLoading(false);
     }
@@ -109,19 +109,19 @@ const ServerDetailPage = () => {
         if (editingLogPath) {
           // Оновлення існуючого шляху до логу
           await api.patch(`/api/log-paths/${editingLogPath.id}`, values);
-          showSnackbar('Шлях до логу успішно оновлено', 'success');
+          showSnackbar('Log path updated successfully', 'success');
         } else {
           // Створення нового шляху до логу
           await api.post(`/api/log-paths/server/${id}`, values);
-          showSnackbar('Шлях до логу успішно створено', 'success');
+          showSnackbar('Log path created successfully', 'success');
         }
         
         // Оновлення списку шляхів до логів
         fetchLogPaths();
         handleCloseDialog();
       } catch (error) {
-        console.error('Помилка збереження шляху до логу:', error);
-        showSnackbar('Помилка збереження шляху до логу', 'error');
+        console.error('Error saving log path:', error);
+        showSnackbar('Error saving log path', 'error');
       }
     }
   });
@@ -165,11 +165,11 @@ const ServerDetailPage = () => {
   const handleDeleteLogPath = async () => {
     try {
       await api.delete(`/api/log-paths/${deleteDialog.logPathId}`);
-      showSnackbar('Шлях до логу успішно видалено', 'success');
+      showSnackbar('Log path deleted successfully', 'success');
       fetchLogPaths();
     } catch (error) {
-      console.error('Помилка видалення шляху до логу:', error);
-      showSnackbar('Помилка видалення шляху до логу', 'error');
+      console.error('Error deleting log path:', error);
+      showSnackbar('Error deleting log path', 'error');
     } finally {
       handleCloseDeleteDialog();
     }
@@ -226,7 +226,7 @@ const ServerDetailPage = () => {
           component={RouterLink} 
           to="/servers"
         >
-          Назад до списку серверів
+          Back to Servers List
         </Button>
       </Box>
       
@@ -235,14 +235,14 @@ const ServerDetailPage = () => {
         <Grid item xs={12} md={6}>
           <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
-              Деталі сервера
+              Server Details
             </Typography>
             <Divider sx={{ mb: 2 }} />
             
             <Grid container spacing={2}>
               <Grid item xs={4}>
                 <Typography variant="subtitle2" color="textSecondary">
-                  Хост:
+                  Host:
                 </Typography>
               </Grid>
               <Grid item xs={8}>
@@ -253,7 +253,7 @@ const ServerDetailPage = () => {
               
               <Grid item xs={4}>
                 <Typography variant="subtitle2" color="textSecondary">
-                  Порт:
+                  Port:
                 </Typography>
               </Grid>
               <Grid item xs={8}>
@@ -264,7 +264,7 @@ const ServerDetailPage = () => {
               
               <Grid item xs={4}>
                 <Typography variant="subtitle2" color="textSecondary">
-                  Користувач:
+                  User:
                 </Typography>
               </Grid>
               <Grid item xs={8}>
@@ -275,12 +275,12 @@ const ServerDetailPage = () => {
               
               <Grid item xs={4}>
                 <Typography variant="subtitle2" color="textSecondary">
-                  Тип аутентифікації:
+                  Authentication Type:
                 </Typography>
               </Grid>
               <Grid item xs={8}>
                 <Typography variant="body1">
-                  {server.private_key ? 'Приватний ключ' : 'Пароль'}
+                  {server.private_key ? 'Private Key' : 'Password'}
                 </Typography>
               </Grid>
             </Grid>
@@ -304,7 +304,7 @@ const ServerDetailPage = () => {
           <Paper sx={{ p: 3 }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
               <Typography variant="h6">
-                Шляхи до логів
+                Log Paths
               </Typography>
               <Button
                 variant="contained"
@@ -312,7 +312,7 @@ const ServerDetailPage = () => {
                 startIcon={<AddIcon />}
                 onClick={handleOpenCreateDialog}
               >
-                Додати лог
+                Add Log
               </Button>
             </Box>
             <Divider sx={{ mb: 2 }} />
@@ -337,7 +337,7 @@ const ServerDetailPage = () => {
                                 size="small"
                                 color={logPathStatus[logPath.id] ? "success" : "error"}
                                 icon={logPathStatus[logPath.id] ? <CheckIcon /> : <ErrorIcon />}
-                                label={logPathStatus[logPath.id] ? "Доступний" : "Недоступний"}
+                                label={logPathStatus[logPath.id] ? "Available" : "Unavailable"}
                               />
                             )}
                           </Box>
@@ -403,7 +403,7 @@ const ServerDetailPage = () => {
             ) : (
               <Box textAlign="center" py={3}>
                 <Typography variant="body1" color="textSecondary">
-                  Немає доданих шляхів до логів
+                  No log paths added
                 </Typography>
                 <Button
                   variant="outlined"
@@ -412,7 +412,7 @@ const ServerDetailPage = () => {
                   onClick={handleOpenCreateDialog}
                   sx={{ mt: 2 }}
                 >
-                  Додати перший лог
+                  Add First Log
                 </Button>
               </Box>
             )}
@@ -423,14 +423,14 @@ const ServerDetailPage = () => {
       {/* Діалог створення/редагування шляху до логу */}
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogTitle>
-          {editingLogPath ? 'Редагувати шлях до логу' : 'Додати новий шлях до логу'}
+          {editingLogPath ? 'Edit Log Path' : 'Add New Log Path'}
         </DialogTitle>
         <DialogContent>
           <TextField
             margin="normal"
             fullWidth
             id="name"
-            label="Назва"
+            label="Name"
             name="name"
             value={formik.values.name}
             onChange={formik.handleChange}
@@ -442,7 +442,7 @@ const ServerDetailPage = () => {
             margin="normal"
             fullWidth
             id="path"
-            label="Шлях до файлу"
+            label="File Path"
             name="path"
             value={formik.values.path}
             onChange={formik.handleChange}
@@ -455,7 +455,7 @@ const ServerDetailPage = () => {
             margin="normal"
             fullWidth
             id="description"
-            label="Опис (опціонально)"
+            label="Description (optional)"
             name="description"
             value={formik.values.description}
             onChange={formik.handleChange}
@@ -465,32 +465,32 @@ const ServerDetailPage = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Скасувати</Button>
-          <Button 
-            onClick={() => formik.handleSubmit()} 
-            variant="contained" 
-            color="primary"
-            disabled={formik.isSubmitting}
+          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button
+              onClick={() => formik.handleSubmit()}
+              variant="contained"
+              color="primary"
+              disabled={formik.isSubmitting}
           >
-            {editingLogPath ? 'Зберегти' : 'Додати'}
+            {editingLogPath ? 'Save' : 'Add'}
           </Button>
         </DialogActions>
       </Dialog>
       
       {/* Діалог підтвердження видалення */}
       <Dialog open={deleteDialog.open} onClose={handleCloseDeleteDialog}>
-        <DialogTitle>Видалити шлях до логу</DialogTitle>
+        <DialogTitle>Delete Log Path</DialogTitle>
         <DialogContent>
           <Typography>
-            Ви впевнені, що хочете видалити цей шлях до логу? Ця дія не може бути скасована.
+            Are you sure you want to delete this log path? This action cannot be undone.
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDeleteDialog} color="primary">
-            Скасувати
+            Cancel
           </Button>
           <Button onClick={handleDeleteLogPath} color="error" variant="contained">
-            Видалити
+            Delete
           </Button>
         </DialogActions>
       </Dialog>

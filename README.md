@@ -1,88 +1,100 @@
-# 🌐 Log Manager
+# 🌐 Log Manager | Real-time SSH Log Viewer | Tail Logs Dashboard
 
-**Log Manager** — це веб-додаток для централізованого моніторингу лог-файлів на віддалених серверах у реальному часі.  
-Простий у використанні інструмент для розробників, DevOps та системних адміністраторів.
-
----
-
-## 🎯 Мета проєкту
-
-Полегшити процес доступу до логів без необхідності вручну заходити на кожен сервер.  
-Додаток дозволяє:
-- централізовано переглядати логи з кількох серверів,
-- бачити вивід логів у реальному часі (tail -f),
-- легко додавати нові сервери та шляхи до логів,
-- мати простий веб-інтерфейс з авторизацією користувача.
+**Log Manager** is a web application for centralized real-time monitoring of log files on remote servers.  
+A simple and easy-to-use tool for developers, DevOps engineers, and system administrators.
 
 ---
 
-## 🚀 Основні можливості
+## 🎯 Project Goal
 
-- 🔐 Реєстрація та авторизація користувачів (JWT)
-- 🖥️ Управління серверами (додавання, редагування, видалення)
-- 📁 Додавання та керування лог-файлами для кожного сервера
-- 📡 Перегляд логів у реальному часі (через WebSocket, `tail -f`)
-- 🛡️ Безпечне зберігання SSH-даних для підключення
-- ⚙️ Простий REST API для взаємодії
-
----
-
-## 🛠️ Технічний стек
-
-| Компонент        | Технологія         |
-|------------------|--------------------|
-| Backend          | Node.js, Express.js |
-| SSH-з’єднання    | ssh2                |
-| WebSocket        | socket.io           |
-| Frontend         | React.js            |
-| База даних       | SQLite              |
-| Аутентифікація   | JWT                 |
+To simplify the process of accessing logs without the need to manually connect to each server.  
+The application allows you to:
+- view logs from multiple servers in a centralized way,
+- see real-time log output (`tail -f`),
+- easily add new servers and log file paths,
+- use a simple web interface with user authentication.
 
 ---
 
-## ⚙️ Встановлення та запуск
+## 🚀 Key Features
 
-### 1. Встановлення залежностей
+- 🔐 User registration and authentication (JWT)
+- 🖥️ Server management (add, edit, delete)
+- 📁 Add and manage log files for each server
+- 📡 Real-time log viewing (via WebSocket, `tail -f`)
+- 🛡️ Secure storage of SSH connection data
+- ⚙️ Simple REST API for interaction
 
-``` bash
+---
+
+## 🛠️ Tech Stack
+
+| Component      | Technology       |
+|----------------|------------------|
+| Backend        | Node.js, Express.js |
+| SSH Connection | ssh2             |
+| WebSocket      | socket.io        |
+| Frontend       | React.js         |
+| Database       | SQLite           |
+| Authentication | JWT              |
+
+---
+
+## ⚙️ Installation & Running
+
+### 1. Install dependencies
+
+```bash
 npm run install:all
 ```
-###  2. Міграції БД
-``` bash
+
+### 2. Database migrations
+
+```bash
 cd backend && npm run migrate
 ```
-###  3. Запуск у режимі розробки
-``` bash
+
+### 3. Run in development mode
+
+```bash
 npm run dev
 ```
-### 🐳 Docker (опційно)
 
-``` bash
+### 🐳 Docker (optional)
+
+```bash
 docker-compose up -d
 ```
 
-🌐 Вебінтерфейс: http://localhost:3000
-
+🌐 Web interface: http://localhost:3000  
 ⚙️ API: http://localhost:3001
 
+---
 
-###  💬 Зворотній зв’язок та підтримка
-Якщо проєкт був тобі корисний — підтримай його розвиток 🙌
+### 💬 Feedback & Support
 
-### 💳 Донат на Monobank
+If this project was helpful — please support its development 🙌
 
-Номер картки: `4441 1111 2600 6190`  
-Або просто відскануй QR-код нижче:
+### 💳 Donation via Monobank
+
+Card number: `4441 1111 2600 6190`  
+Or simply scan the QR code below:
 
 ![Monobank QR](monobank_qr.png)
 
-### 🔍 SEO ключові слова
-log manager, real-time log viewer, ssh log viewer, tail logs web,
-log streaming dashboard, nodejs ssh log, react log viewer,
-log monitoring open source, перегляд логів з серверів, лог менеджер, log dashboard
+---
 
-### 📄 Ліцензія
-Проєкт розповсюджується під ліцензією MIT.
-Вільний для використання, зміни та розповсюдження.
+### 🔍 SEO Keywords
+log manager, real-time log viewer, ssh log viewer, tail logs web,  
+log streaming dashboard, nodejs ssh log, react log viewer,  
+log monitoring open source, server log viewer, log manager, log dashboard
 
-### 🇺🇦 Розроблено з любов’ю в Україні
+---
+
+### 📄 License
+This project is licensed under the MIT License.  
+Free to use, modify, and distribute.
+
+---
+
+### 🇺🇦 Made with love in Ukraine
